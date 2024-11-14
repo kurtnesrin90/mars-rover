@@ -11,10 +11,10 @@ public class InputParser {
         PlateauSize plateauSize = new PlateauSize(first, second);
         String[] inputNumbers = input.split(" ");
 
+        if (inputNumbers.length != 2) {
+            throw new RuntimeException("Invalid size");
+        }
         for(int i=0; i<inputNumbers.length; i++) {
-            if (inputNumbers.length != 2) {
-                    throw new RuntimeException("Invalid size");
-                }
 
                 first = Integer.parseInt(inputNumbers[0]);
                 second = Integer.parseInt(inputNumbers[1]);
