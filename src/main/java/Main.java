@@ -6,7 +6,7 @@ public class Main {
 
         InputParser x = new InputParser();
 
-        System.out.println(x.checkPlateauSize("5"));
+        System.out.println(x.checkPlateauSize("5 6"));
         System.out.println(x.checkInstruction("LMR"));
         System.out.println(x.checkPosition("3 4 N"));
 
