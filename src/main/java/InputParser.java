@@ -4,8 +4,7 @@ import java.util.List;
 
 public class InputParser {
 
-
-    public PlateauSize checkPlateauSize(String input) {
+    public PlateauSize parsePlateauSize(String input) {
         int xAxis;
         int yAxis;
         PlateauSize plateauSize;
@@ -39,7 +38,7 @@ public class InputParser {
     }
 
 
-    public Position checkPosition(String input) {
+    public Position parsePosition(String input) {
 
          // input can not be null
         if(input == null){
@@ -68,8 +67,6 @@ public class InputParser {
 
         Position position = new Position(xAxis , yAxis , facing);
            return position;
-
-       // throw new RuntimeException("INVALID STATE");
     }
 
 
