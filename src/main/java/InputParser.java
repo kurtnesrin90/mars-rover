@@ -6,9 +6,9 @@ public class InputParser {
 
 
     public PlateauSize checkPlateauSize(String input) {
-        int first = 0;
-        int second = 0;
-        PlateauSize plateauSize = new PlateauSize(first, second);
+        int xAxis;
+        int yAxis;
+        PlateauSize plateauSize;
 
         //we can not use empty or null input
         if(input == null ){
@@ -18,22 +18,22 @@ public class InputParser {
             throw new NullPointerException("Can not allowed being empty");
         }
         String[] inputNumbers = input.split(" ");
-        first = Integer.parseInt(inputNumbers[0]); //parseInt() can throw an exception
-        second = Integer.parseInt(inputNumbers[1]);
+        xAxis = Integer.parseInt(inputNumbers[0]); //parseInt() can throw an exception
+        yAxis = Integer.parseInt(inputNumbers[1]);
 
         //we can just have 2 numbers after splitting, otherwise throw an exception
         if (inputNumbers.length != 2) {
             throw new RuntimeException("Invalid size");
         }
         //we can not use 0 for our plateau
-        if (first == 0 || second == 0){
+        if (xAxis == 0 || yAxis == 0){
             throw new IllegalArgumentException("Can not use \"0\"");
                 }
         // we cannot use negative numbers for our plateau
-        if(first < 0 || second < 0){
+        if(xAxis < 0 || yAxis < 0){
             throw new RuntimeException("Can not use negative numbers");
         }
-        plateauSize = new PlateauSize(first, second);
+        plateauSize = new PlateauSize(xAxis, yAxis);
 
             return plateauSize;
     }
@@ -41,20 +41,35 @@ public class InputParser {
 
     public Position checkPosition(String input) {
 
-
-       // Position position = new Position(first , second , CompassDirection.valueOf(third));
-        String[] positionInputValues = input.split(" ");
-        // length 3 degilse exception
-        //for sil
-        for(int i=0; i<positionInputValues.length; i++){
-           int first = Integer.parseInt(positionInputValues[0]); // numbersexception
-           int second = Integer.parseInt(positionInputValues[1]); // numbersexception
-           CompassDirection third = CompassDirection.valueOf(positionInputValues[2].toUpperCase()); // illegal argument exception
-
-           Position position = new Position(first , second , third);
-           return position;
+         // input can not be null
+        if(input == null){
+            throw new NullPointerException("Input can not be null");
         }
-        throw new RuntimeException("INVALID STATE");
+        // input can not be empty
+        if(input.isEmpty()){
+            throw new IllegalArgumentException("Input can not be empty");
+        }
+
+        //Split input to the array
+        String[] positionInputValues = input.split(" ");
+
+        // we need 3 elements after splitting
+        if(positionInputValues.length != 3){
+            throw new RuntimeException("Input length is invalid");
+        }
+
+        int xAxis = Integer.parseInt(positionInputValues[0]); // parseInt() can throw numbers exception
+        int yAxis = Integer.parseInt(positionInputValues[1]); // parseInt() can throw numbers exception
+        CompassDirection facing = CompassDirection.valueOf(positionInputValues[2].toUpperCase());// valueOf() can throw illegal argument exception
+
+        if(xAxis < 0 || yAxis < 0){
+            throw new RuntimeException("Can not use negative numbers");
+        }
+
+        Position position = new Position(xAxis , yAxis , facing);
+           return position;
+
+       // throw new RuntimeException("INVALID STATE");
     }
 
 
