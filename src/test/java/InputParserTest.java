@@ -7,22 +7,27 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class InputParserTest {
 
     @Test
-    @DisplayName("Test the given values if they are unvalid")
+    @DisplayName("Test the given values if they are invalid")
     void testCheckPlateauSizeWithInvalidInput() {
         //Arrange
-        String input1 = "A B";
-        String input2 = "ABCD";
-        String input3 = " ";
-        String input4 = "0 0";
-        String input5 = "3 4 5";
+        String inputWithNotNumber = "A B";
+        String inputIsNotValidLength = "ABCD";
+        String inputIsEmpty = " ";
+        String inputWithZero = "0 0";
+        String inputWithNumberInvalidLength = "3 4 5";
+        String inputWithNegativeNumber = "-3 5";
+        String inputIsNull = null;
         //Act
         InputParser inputParser = new InputParser();
         //Assert
-        assertThrows(NumberFormatException.class , () -> inputParser.checkPlateauSize(input1));
-        assertThrows(RuntimeException.class , () -> inputParser.checkPlateauSize(input2));
-        assertThrows(RuntimeException.class , () -> inputParser.checkPlateauSize(input3));
-        assertThrows(IllegalArgumentException.class, () -> inputParser.checkPlateauSize(input4));
-        assertThrows(RuntimeException.class , () -> inputParser.checkPlateauSize(input5));
+        assertThrows(NumberFormatException.class , () -> inputParser.checkPlateauSize(inputWithNotNumber));
+        assertThrows(RuntimeException.class , () -> inputParser.checkPlateauSize(inputIsNotValidLength));
+        assertThrows(RuntimeException.class , () -> inputParser.checkPlateauSize(inputIsEmpty));
+        assertThrows(IllegalArgumentException.class, () -> inputParser.checkPlateauSize(inputWithZero));
+        assertThrows(RuntimeException.class , () -> inputParser.checkPlateauSize(inputWithNumberInvalidLength));
+        assertThrows(RuntimeException.class , () -> inputParser.checkPlateauSize(inputWithNegativeNumber));
+        assertThrows(NullPointerException.class , () -> inputParser.checkPlateauSize(inputIsNull));
+
     }
 
     @Test
@@ -33,7 +38,6 @@ class InputParserTest {
         //Act
         InputParser inputParser = new InputParser();
         PlateauSize plateauSize = inputParser.checkPlateauSize(input);
-
         //Assert
         assertEquals(4, plateauSize.getX());
         assertEquals(5, plateauSize.getY());

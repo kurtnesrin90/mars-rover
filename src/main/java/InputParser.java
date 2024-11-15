@@ -9,25 +9,32 @@ public class InputParser {
         int first = 0;
         int second = 0;
         PlateauSize plateauSize = new PlateauSize(first, second);
-        String[] inputNumbers = input.split(" ");
 
+        //we can not use empty or null input
+        if(input == null ){
+            throw new NullPointerException("can not allowed being null");
+        }
+        if(input.isEmpty()){
+            throw new NullPointerException("Can not allowed being empty");
+        }
+        String[] inputNumbers = input.split(" ");
+        first = Integer.parseInt(inputNumbers[0]); //parseInt() can throw an exception
+        second = Integer.parseInt(inputNumbers[1]);
+
+        //we can just have 2 numbers after splitting, otherwise throw an exception
         if (inputNumbers.length != 2) {
             throw new RuntimeException("Invalid size");
         }
-        for(int i=0; i<inputNumbers.length; i++) {
-
-                first = Integer.parseInt(inputNumbers[0]);
-                second = Integer.parseInt(inputNumbers[1]);
-
-            if (first == 0 || second == 0){
-                    throw new IllegalArgumentException("Can not use \"0\"");
+        //we can not use 0 for our plateau
+        if (first == 0 || second == 0){
+            throw new IllegalArgumentException("Can not use \"0\"");
                 }
+        // we cannot use negative numbers for our plateau
+        if(first < 0 || second < 0){
+            throw new RuntimeException("Can not use negative numbers");
+        }
+        plateauSize = new PlateauSize(first, second);
 
-            plateauSize = new PlateauSize(first, second);
-        }
-            if(input.equals("")){
-                    throw new RuntimeException("Invalid input");
-        }
             return plateauSize;
     }
 
@@ -38,7 +45,7 @@ public class InputParser {
        // Position position = new Position(first , second , CompassDirection.valueOf(third));
         String[] positionInputValues = input.split(" ");
         // length 3 degilse exception
-
+        //for sil
         for(int i=0; i<positionInputValues.length; i++){
            int first = Integer.parseInt(positionInputValues[0]); // numbersexception
            int second = Integer.parseInt(positionInputValues[1]); // numbersexception
