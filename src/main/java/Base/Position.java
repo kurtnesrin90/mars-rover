@@ -1,4 +1,4 @@
-
+package Base;
 
 public class Position {
     private int x;
@@ -13,7 +13,7 @@ public class Position {
 
     @Override
     public String toString() {
-        return "Position{" +
+        return "Base.Position{" +
                 "x=" + x +
                 ", y=" + y +
                 ", facing=" + facing +

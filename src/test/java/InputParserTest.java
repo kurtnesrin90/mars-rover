@@ -1,3 +1,7 @@
+import Base.CompassDirection;
+import Base.InputParser;
+import Base.PlateauSize;
+import Base.Position;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

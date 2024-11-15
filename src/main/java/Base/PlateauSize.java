@@ -1,3 +1,4 @@
+package Base;
 
 public class PlateauSize {
 
@@ -11,7 +12,7 @@ public class PlateauSize {
 
     @Override
     public String toString() {
-        return "PlateauSize{" +
+        return "Base.PlateauSize{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';

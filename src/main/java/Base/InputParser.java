@@ -1,3 +1,4 @@
+package Base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +96,7 @@ public class InputParser {
         // if input has an unwanted value throw an exception
          for (int i=0; i<inputInstructions.length; i++){
              if(!inputInstructions[i].equals("L") && !inputInstructions[i].equals("R") && !inputInstructions[i].equals("M")){
-                 throw new IllegalArgumentException("Instruction "+ inputInstructions[i] + " is not valid");
+                 throw new IllegalArgumentException("Base.Instruction "+ inputInstructions[i] + " is not valid");
              }
 
              // give instruction for L command
