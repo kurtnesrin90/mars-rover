@@ -67,18 +67,41 @@ class InputParserTest {
     }
 
 
-        @Test
-        @DisplayName("Test the given inputs for the position, if they are valid")
-        void testParsePositionWithValidInput() {
-        //Arrange
+    @Test
+    @DisplayName("Test the given inputs for the position, if they are valid")
+    void testParsePositionWithValidInput() {
+            //Arrange
             String inputIsValid = "6 6 N";
-        //Act
+            //Act
             InputParser inputParser = new InputParser();
             Position position = inputParser.parsePosition(inputIsValid);
-        //Assert
-            assertEquals(6 , position.getX());
-            assertEquals(6 , position.getY());
-            assertEquals(CompassDirection.N , position.getFacing());
+            //Assert
+            assertEquals(6, position.getX());
+            assertEquals(6, position.getY());
+            assertEquals(CompassDirection.N, position.getFacing());
+        }
+
+
+    @Test
+    @DisplayName("Test the given inputs for the instructions, if they are invalid")
+    void testParseInstructionWithInvalidInput(){
+            //Arrange
+            String inputIsNull = null;
+            String inputIsEmpty = "";
+            String inputWithUnwantedValue = "LMRN";
+            String inputWithNumber = "3LM4R";
+            //Act
+            InputParser inputParser = new InputParser();
+            //Assert
+            assertThrows(NullPointerException.class , () -> inputParser.parseInstruction(inputIsNull));
+            assertThrows(IllegalArgumentException.class , () -> inputParser.parseInstruction(inputIsEmpty));
+            assertThrows(IllegalArgumentException.class , () -> inputParser.parseInstruction(inputWithUnwantedValue));
+            assertThrows(IllegalArgumentException.class , () -> inputParser.parseInstruction(inputWithNumber));
+
+
+
+
+
 
 
 
