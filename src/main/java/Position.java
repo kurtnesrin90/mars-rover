@@ -19,4 +19,16 @@ public class Position {
                 ", facing=" + facing +
                 '}';
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public CompassDirection getFacing() {
+        return facing;
+    }
 }
