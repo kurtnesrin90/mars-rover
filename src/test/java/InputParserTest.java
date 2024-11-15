@@ -42,4 +42,55 @@ class InputParserTest {
         assertEquals(4, plateauSize.getX());
         assertEquals(5, plateauSize.getY());
     }
+
+    @Test
+    @DisplayName("Test the given inputs for the position, if they are invalid")
+    void testCheckPositionWithInvalidInput() {
+        //Act
+        String inputIsEmpty = "";
+        String inputIsNull = null;
+        String inputWithInvalidLength = "1 2 3 4 N";
+        String inputWithSmallerLength = "1 N";
+        String inputWithoutNumbers = "1 N N";
+        String inputWithAnIllegalDirection = "1 2 A";
+        String inputWithNegativeNumbers = "-4 5 N";
+        //Arrange
+        InputParser inputParser = new InputParser();
+        //Assert
+        assertThrows(IllegalArgumentException.class , () -> inputParser.checkPosition(inputIsEmpty));
+        assertThrows(NullPointerException.class , () -> inputParser.checkPosition(inputIsNull));
+        assertThrows(RuntimeException.class , () -> inputParser.checkPosition(inputWithInvalidLength));
+        assertThrows(RuntimeException.class , () -> inputParser.checkPosition(inputWithSmallerLength));
+        assertThrows(NumberFormatException.class , () -> inputParser.checkPosition(inputWithoutNumbers));
+        assertThrows(IllegalArgumentException.class , () -> inputParser.checkPosition(inputWithAnIllegalDirection));
+        assertThrows(RuntimeException.class , () -> inputParser.checkPosition(inputWithNegativeNumbers));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 }
