@@ -1,8 +1,9 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class InputParserTest {
 
@@ -83,7 +84,7 @@ class InputParserTest {
 
 
     @Test
-    @DisplayName("Test the given inputs for the instructions, if they are invalid")
+    @DisplayName("Test the given inputs for the instructions if they are invalid")
     void testParseInstructionWithInvalidInput(){
             //Arrange
             String inputIsNull = null;
@@ -99,33 +100,22 @@ class InputParserTest {
             assertThrows(IllegalArgumentException.class , () -> inputParser.parseInstruction(inputWithNumber));
 
 
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Test
+    @DisplayName("Test the given inputs for the instructions if they are valid")
+    void testParseInstructionWithValidInput(){
+            //Arrange
+            String inputWithValidInstructions = "LRM";
+            List<String> listOfInputWithValidInstructions = List.of("Spins the Rover 90 degrees Left without moving from the current coordinate point",
+                   "Spins the Rover 90 degrees Right without moving from the current coordinate point" ,
+                    "Moves the Rover forward by one grid point, maintaining the same heading/orientation");
+            //Act
+            InputParser inputParser = new InputParser();
+            List<String> result = inputParser.parseInstruction(inputWithValidInstructions);
+            //Assert
+            assertEquals(listOfInputWithValidInstructions, result);
 
     }
+
 }
