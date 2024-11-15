@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class InputParserTest {
 
     @Test
-    @DisplayName("Test the given values if they are invalid")
+    @DisplayName("Test the given values for the plateau size if they are invalid")
     void testParsePlateauSizeWithInvalidInput() {
         //Arrange
             String inputWithNotNumber = "A B";
@@ -32,7 +32,7 @@ class InputParserTest {
     }
 
     @Test
-    @DisplayName("Test the given values if they are valid")
+    @DisplayName("Test the given values for the plateau size if they are valid")
     void testParsePlateauSizeWithValidInput() {
         //Arrange
             String input = "4 5";
@@ -45,7 +45,7 @@ class InputParserTest {
     }
 
     @Test
-    @DisplayName("Test the given inputs for the position, if they are invalid")
+    @DisplayName("Test the given inputs for the position if they are invalid")
     void testParsePositionWithInvalidInput() {
         //Arrange
             String inputIsEmpty = "";
@@ -69,7 +69,7 @@ class InputParserTest {
 
 
     @Test
-    @DisplayName("Test the given inputs for the position, if they are valid")
+    @DisplayName("Test the given inputs for the position if they are valid")
     void testParsePositionWithValidInput() {
             //Arrange
             String inputIsValid = "6 6 N";
