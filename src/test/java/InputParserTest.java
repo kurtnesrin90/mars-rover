@@ -8,7 +8,7 @@ class InputParserTest {
 
     @Test
     @DisplayName("Test the given values if they are invalid")
-    void testCheckPlateauSizeWithInvalidInput() {
+    void testParsePlateauSizeWithInvalidInput() {
         //Arrange
             String inputWithNotNumber = "A B";
             String inputIsNotValidLength = "ABCD";
@@ -20,24 +20,24 @@ class InputParserTest {
         //Act
             InputParser inputParser = new InputParser();
         //Assert
-            assertThrows(NumberFormatException.class, () -> inputParser.checkPlateauSize(inputWithNotNumber));
-            assertThrows(RuntimeException.class, () -> inputParser.checkPlateauSize(inputIsNotValidLength));
-            assertThrows(RuntimeException.class, () -> inputParser.checkPlateauSize(inputIsEmpty));
-            assertThrows(IllegalArgumentException.class, () -> inputParser.checkPlateauSize(inputWithZero));
-            assertThrows(RuntimeException.class, () -> inputParser.checkPlateauSize(inputWithNumberInvalidLength));
-            assertThrows(RuntimeException.class, () -> inputParser.checkPlateauSize(inputWithNegativeNumber));
-            assertThrows(NullPointerException.class, () -> inputParser.checkPlateauSize(inputIsNull));
+            assertThrows(NumberFormatException.class, () -> inputParser.parsePlateauSize(inputWithNotNumber));
+            assertThrows(RuntimeException.class, () -> inputParser.parsePlateauSize(inputIsNotValidLength));
+            assertThrows(RuntimeException.class, () -> inputParser.parsePlateauSize(inputIsEmpty));
+            assertThrows(IllegalArgumentException.class, () -> inputParser.parsePlateauSize(inputWithZero));
+            assertThrows(RuntimeException.class, () -> inputParser.parsePlateauSize(inputWithNumberInvalidLength));
+            assertThrows(RuntimeException.class, () -> inputParser.parsePlateauSize(inputWithNegativeNumber));
+            assertThrows(NullPointerException.class, () -> inputParser.parsePlateauSize(inputIsNull));
 
     }
 
     @Test
     @DisplayName("Test the given values if they are valid")
-    void testCheckPlateauSizeWithValidInput() {
+    void testParsePlateauSizeWithValidInput() {
         //Arrange
             String input = "4 5";
         //Act
             InputParser inputParser = new InputParser();
-            PlateauSize plateauSize = inputParser.checkPlateauSize(input);
+            PlateauSize plateauSize = inputParser.parsePlateauSize(input);
         //Assert
             assertEquals(4, plateauSize.getX());
             assertEquals(5, plateauSize.getY());
